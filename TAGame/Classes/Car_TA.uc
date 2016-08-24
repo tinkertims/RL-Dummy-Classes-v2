@@ -8,5 +8,5 @@
 class Car_TA extends Vehicle_TA;
 
 var privatewrite transient bool bDriving;
-//var transient CarComponent_Boost_TA BoostComponent;
+var transient CarComponent_Boost_TA BoostComponent;
 var() editinline CarMeshComponent_TA CarMesh;

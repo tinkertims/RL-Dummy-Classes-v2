@@ -15,7 +15,7 @@ var protectedwrite transient int ProductID;
 var protectedwrite transient Car_TA Car;
 var protectedwrite transient GameEvent_TA GameEvent;
 var protectedwrite transient GameEvent_Soccar_TA SoccarGame;
-
+ 
 function Init(PRI_TA InPRI, int InProductID)
 {
     
