@@ -12,7 +12,10 @@ native;
 var() Actor GoalOrientation;
 
 var() byte TeamNum;
-
+/** If goal has a direction it only accepts balls from, use this actors rotation */
+var() const float GoalDirection;
+/** How many points to award for this goal. */
+var() int PointsToAward;
 var privatewrite transient Vector Location;
 var privatewrite transient Vector Direction;
 var privatewrite transient Rotator Rotation;
