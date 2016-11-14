@@ -7,6 +7,18 @@
  *******************************************************************************/
 class Ball_TA extends RBActor_TA;
 
+struct native ExplosionData
+{
+    var export editinline Goal_TA Goal;
+    var Vector Location;
+
+    structdefaultproperties
+    {
+        Goal=none
+        Location=(X=0.0,Y=0.0,Z=0.0)
+    }
+};
+
 
 /** visual mesh */
 var() export editinline StaticMeshComponent StaticMesh;
@@ -26,3 +38,17 @@ var transient float LastCalculateCarHit;
 var transient Vector InitialLocation;
 var transient Rotator InitialRotation;
 var transient float LastHitWorldTime;
+var repnotify float ReplicatedWorldBounceScale;
+//var privatewrite transient Constraint2D_TA Constraint;
+var privatewrite transient byte HitTeamNum;
+var privatewrite repnotify transient GameEvent_Soccar_TA GameEvent;
+var privatewrite repnotify transient ExplosionData ReplicatedExplosionData;
+//var privatewrite transient Explosion_X Explosion;
+var privatewrite transient float ExplosionTime;
+var privatewrite transient Vector OldLocation;
+var MaterialInterface FadeMaterial;
+/** Timestep when predicting our next position(s) */
+var() float PredictionTimestep;
+//var const transient array<PredictedPosition> PredictedPositions;
+var const transient float LastPredictionTime;
+
