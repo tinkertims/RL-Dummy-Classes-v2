@@ -24,3 +24,38 @@ enum EFXComponentTarget
     FXComponentTarget_NonLocal,
     FXComponentTarget_MAX
 };
+
+var class SpawnState;
+var Qword ActivationState;
+/** Components to attach in response to various named events */
+//var() array<ActorComponent_X> Attachments;
+/** Default socket or bone name to attach things to */
+var() name SocketOrBoneName;
+/** Deactivate all fx when our ownger gets destroyed */
+var() bool bDeactivateWhenOwnerDestroyed;
+/** Allows the primitive components that are attached to cast shadows, typically not necessary. Does not turn shadows on, but allows them. */
+var() bool bAllowShadowCasting;
+var privatewrite transient bool bActive;
+var privatewrite transient bool bPendingDestroy;
+var privatewrite const transient bool bHadOwner;
+/** Inherit/overwrite components from this FXActor */
+//var() GetAPlayerController Parent;
+var privatewrite transient Qword AttachmentActor;
+//var privatewrite transient array FXStates;
+/** Handles setting parameters on all our components */
+var() export editinline class Parameters;
+/** Keep track of when an FX actor archetype changes so we can update instances */
+var() editoronly const editconst int EditID;
+
+defaultproperties
+{
+	Begin Object Class=ParameterDispenser_X Name=DefaultParameters
+	End Object
+	
+	bDeactivateWhenOwnerDestroyed=true
+    Parameters=DefaultParameters
+    TickGroup=ETickingGroup.TG_PostUpdateWork
+    bAlwaysRelevant=true
+    bHardAttach=true
+    bDedicatedServerRelevant=false
+}
