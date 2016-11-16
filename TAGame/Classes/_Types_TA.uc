@@ -121,6 +121,15 @@ enum EProductAttachmentSocket
     PAS_MAX
 };
 
+enum EMirrorFieldType
+{
+    MFT_None,
+    MFT_X,
+    MFT_Y,
+    MFT_XY,
+    MFT_MAX
+};
+
 struct PlayerTitleDataSet
 {
     var int Titles[16];
@@ -434,15 +443,32 @@ struct native BallHitInfo
     var PRI_TA AttackerPRI;
     var name CarName;
     var int TeamNum;
-    //var ReplicatedRBState PreHitCarPhysics;
-    //var ReplicatedRBState PreHitBallPhysics;
-    //var ReplicatedRBState PostHitBallPhysics;
+    var  ReplicatedRBState PreHitCarPhysics;
+    var  ReplicatedRBState PreHitBallPhysics;
+    var  ReplicatedRBState PostHitBallPhysics;
     var float Distance;
     var float Time;
     var Vector HitLocation;
     var Vector HitNormal;
     var bool bDodging;
     var bool bWheelsTouching;
+	
+	structdefaultproperties
+    {
+        PRI=none
+        AttackerPRI=none
+        CarName=None
+        TeamNum=0
+        PreHitCarPhysics=(Location=(X=0.0,Y=0.0,Z=0.0),Rotation=(Pitch=0,Yaw=0,Roll=0),LinearVelocity=(X=0.0,Y=0.0,Z=0.0),AngularVelocity=(X=0.0,Y=0.0,Z=0.0),bSleeping=false,bNewData=false)
+        PreHitBallPhysics=(Location=(X=0.0,Y=0.0,Z=0.0),Rotation=(Pitch=0,Yaw=0,Roll=0),LinearVelocity=(X=0.0,Y=0.0,Z=0.0),AngularVelocity=(X=0.0,Y=0.0,Z=0.0),bSleeping=false,bNewData=false)
+        PostHitBallPhysics=(Location=(X=0.0,Y=0.0,Z=0.0),Rotation=(Pitch=0,Yaw=0,Roll=0),LinearVelocity=(X=0.0,Y=0.0,Z=0.0),AngularVelocity=(X=0.0,Y=0.0,Z=0.0),bSleeping=false,bNewData=false)
+        Distance=0.0
+        Time=0.0
+        HitLocation=(X=0.0,Y=0.0,Z=0.0)
+        HitNormal=(X=0.0,Y=0.0,Z=0.0)
+        bDodging=false
+        bWheelsTouching=false
+    }
 
     
 };

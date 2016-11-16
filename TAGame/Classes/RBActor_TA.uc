@@ -5,4 +5,145 @@
  *
  * All rights belong to their respective owners.
  *******************************************************************************/
-class RBActor_TA extends Pawn_X;
+class RBActor_TA extends Pawn_X
+    native
+    nativereplication;
+
+struct native WorldContactData
+{
+    var bool bHasContact;
+    var Vector Location;
+    var Vector Velocity;
+    var Vector Normal;
+
+    structdefaultproperties
+    {
+        bHasContact=false
+        Location=(X=0.0,Y=0.0,Z=0.0)
+        Velocity=(X=0.0,Y=0.0,Z=0.0)
+        Normal=(X=0.0,Y=0.0,Z=0.0)
+    }
+};
+
+struct native NetworkSyncSettingsData
+{
+    /** How fast to blend out location errors over time */
+    var() float LocationFixRate;
+    /** How fast to blend out location errors over time// How fast to blend out angular errors over time
+ */
+    var() float AngularFixRate;
+    /** How fast to blend out location errors over time// How fast to blend out angular errors over time
+// Don't apply correction if the location difference is less than this
+ */
+    var() float MinDeltaLocation;
+    /** How fast to blend out location errors over time// How fast to blend out angular errors over time
+// Don't apply correction if the location difference is less than this
+// Don't apply correction if the rotation difference is less than this
+ */
+    var() const int MinDeltaRotation;
+    /** How fast to blend out location errors over time// How fast to blend out angular errors over time
+// Don't apply correction if the location difference is less than this
+// Don't apply correction if the rotation difference is less than this
+// Don't apply correction if the velocity difference is less than this
+ */
+    var() float MinDeltaLinearVelocity;
+    /** How fast to blend out location errors over time// How fast to blend out angular errors over time
+// Don't apply correction if the location difference is less than this
+// Don't apply correction if the rotation difference is less than this
+// Don't apply correction if the velocity difference is less than this
+ */
+    var() bool bDebug;
+
+    structdefaultproperties
+    {
+        LocationFixRate=4.0
+        AngularFixRate=5.0
+        MinDeltaLocation=5.0
+        MinDeltaRotation=100
+        MinDeltaLinearVelocity=10.0
+        bDebug=false
+    }
+};
+
+var private native const noexport Pointer VfTable_IITickNotify_TA;
+/** Don't exceed this linear speed */
+var() const float MaxLinearSpeed;
+/** Don't exceed this angular speed */
+var() const float MaxAngularSpeed;
+/** Don't let this RB actor sleep, ever */
+var() const bool bDisableSleeping;
+var const transient bool bReplayActor;
+var privatewrite repnotify transient bool bFrozen;
+var const bool bAutoInitFXEffects;
+/** Adjust how we interpolate updates from the server */
+var() NetworkSyncSettingsData NetworkSyncSettings;
+var const transient ReplicatedRBState OldRBState;
+var const transient ReplicatedRBState RBState;
+var const transient ReplicatedRBState ReplicatedRBState;
+var const transient ReplicatedRBState ClientCorrectionRBState;
+var const transient WorldContactData WorldContact;
+var const transient Vector SyncErrorLocation;
+var const transient float SyncErrorAngle;
+var const transient Vector SyncErrorAxis;
+//var export editinline AkParamGroup Ak;
+/** FXActor to create */
+var() FXActor_X FXActorArchetype;
+var protectedwrite transient FXActor_X FXActor;
+/** Handles playing collision FX */
+//var() export editinline ImpactEffectsComponent_TA ImpactEffectsComponent;
+var const transient array<AccumulatedRigidBodyCollision> RBCollisions;
+/** Saves and restores vehicle history for networking */
+//var() class<RBHistory_TA> RBHistoryClass;
+//var const export editinline transient RBHistory_TA RBHistory;
+var const transient int LastRBCollisionsFrame;
+var export editinline ReplayComponent_TA Replay;
+
+defaultproperties
+{
+	Begin Object Class=BallCamTarget_TA Name=DefaultBallCamTarget
+	End Object
+	
+	//Begin Object Class=AkParamGroup Name=DefaultAkParams
+	//End Object
+	
+	Begin Object Class=ReplayComponent_TA Name=ReplayComponent0
+	End Object
+	
+	Begin Object Class=DamageComponent_X Name=LegacyTakeDamageComponent0
+	End Object
+	
+	
+	
+	
+	MaxLinearSpeed=10000.0
+    MaxAngularSpeed=10.0
+    bAutoInitFXEffects=true
+    NetworkSyncSettings=(LocationFixRate=4.0,AngularFixRate=5.0,MinDeltaLocation=5.0,MinDeltaRotation=100,MinDeltaLinearVelocity=10.0,bDebug=false)
+    //Ak=AkParamGroup'Default__RBActor_TA.DefaultAkParams'
+    //RBHistoryClass=class'RBHistory_TA'
+    Replay=ReplayComponent0
+    LegacyTakeDamageComponent=LegacyTakeDamageComponent0
+    bSimulateGravity=false
+    bCanBeBaseForPawns=true
+    bDontPossess=true
+    Health=1000
+    HealthMax=1000
+	
+	begin object name=CollisionCylinder
+        ReplacementPrimitive=none
+        BlockActors=false
+        BlockZeroExtent=false
+    object end
+    CylinderComponent=CollisionCylinder
+	
+	Physics=EPhysics.PHYS_RigidBody
+    CollisionType=ECollisionType.COLLIDE_CustomDefault
+    TickGroup=ETickingGroup.TG_PostAsyncWork
+    bReplicateMovement=false
+    bNetInitialRotation=true
+    bNoEncroachCheck=true
+    bCollideAsEncroacher=true
+	
+	
+	
+}

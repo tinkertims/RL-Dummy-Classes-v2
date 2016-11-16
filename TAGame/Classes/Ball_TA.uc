@@ -5,7 +5,20 @@
  *
  * All rights belong to their respective owners.
  *******************************************************************************/
-class Ball_TA extends RBActor_TA;
+class Ball_TA extends RBActor_TA
+	native;
+
+struct native ExplosionData
+{
+    var export editinline Goal_TA Goal;
+    var Vector Location;
+
+    structdefaultproperties
+    {
+        Goal=none
+        Location=(X=0.0,Y=0.0,Z=0.0)
+    }
+};
 
 
 /** visual mesh */
@@ -15,7 +28,7 @@ var() export editinline StaticMeshComponent StaticMesh;
 /** explosion to spawn */
 //var() Explosion_X ExplosionArchetype;
 //var() Explosion_X NoGoalExplosionArchetype;
-//var export editinline BallCamTarget_TA BallCamTarget;
+var export editinline BallCamTarget_TA BallCamTarget;
 var bool bNextCamTargetOnExplode;
 var transient bool bNotifyGroundHit;
 var privatewrite repnotify transient bool bEndOfGameHidden;
@@ -26,3 +39,147 @@ var transient float LastCalculateCarHit;
 var transient Vector InitialLocation;
 var transient Rotator InitialRotation;
 var transient float LastHitWorldTime;
+var repnotify float ReplicatedBallScale;
+var repnotify StaticMesh ReplicatedBallMesh;
+var repnotify float ReplicatedWorldBounceScale;
+//var privatewrite transient Constraint2D_TA Constraint;
+var privatewrite transient byte HitTeamNum;
+var privatewrite repnotify transient GameEvent_Soccar_TA GameEvent;
+var privatewrite repnotify transient ExplosionData ReplicatedExplosionData;
+//var privatewrite transient Explosion_X Explosion;
+var privatewrite transient float ExplosionTime;
+var privatewrite transient Vector OldLocation;
+var MaterialInterface FadeMaterial;
+/** Timestep when predicting our next position(s) */
+var() float PredictionTimestep;
+//var const transient array<PredictedPosition> PredictedPositions;
+var const transient float LastPredictionTime;
+
+replication
+{
+    // Pos:0x000
+    if(bNetInitial)
+        GameEvent, ReplicatedBallMesh, 
+        ReplicatedBallScale, ReplicatedWorldBounceScale;
+
+    // Pos:0x00A
+    if(bNetDirty)
+        HitTeamNum, ReplicatedExplosionData, 
+        bEndOfGameHidden;
+}
+
+simulated event ReplicatedEvent(name VarName)
+{
+	//Return
+}
+
+/*
+simulated function SetBallScale(float NewScale)
+{
+    local StaticMesh OldMesh;
+    local editinline DecalComponent Decal;
+    local int I;
+	
+	//Return
+}*/
+
+simulated function SetWorldBounceScale(float NewScale)
+{	
+	local PhysicalMaterial PhysMaterial;
+	//Return
+}
+
+simulated function SetBallMesh(StaticMesh NewMesh)
+{
+    //return;    
+}
+
+simulated event PostBeginPlay()
+{
+    //return;    
+}
+
+protected simulated function OnHitWorld(Vector HitLoc, Vector HitNormal)
+{
+    //return;    
+}
+
+simulated function Reset()
+{
+    //return;    
+}
+
+function RecordCarHit(Car_TA HitCar, Vector HitLocation, Vector HitNormal)
+{
+    local BallHitInfo Hit;
+	
+	//Return
+}
+
+protected function OnCarTouch(Car_TA HitCar)
+{
+    //return;    
+}
+
+simulated function TurnOff()
+{
+    //return;    
+}
+
+simulated function SetGameEvent(GameEvent_Soccar_TA SoccarGame)
+{
+    //return;    
+}
+
+protected event OnHitGoal(Goal_TA Goal, Vector HitLoc)
+{
+    //return;    
+}
+
+final function bool IsRoundActive()
+{
+    //return ReturnValue;    
+}
+
+
+defaultproperties
+{
+	Begin Object Class=StaticMeshComponent Name=DefaultMesh
+		ReplacementPrimitive=none
+        RBChannel=ERBCollisionChannel.RBCC_Ball
+        bNotifyRigidBodyCollision=true
+        RBCollideWithChannels=(Default=true,Vehicle=true,GameplayPhysics=true,EffectPhysics=true,Ball=true,BlockingVolume=true)
+        ScriptRigidBodyCollisionThreshold=0.000010
+	End Object
+	
+	
+	Begin Object Name=DefaultBallCamTarget
+	End Object
+	
+	//Begin Object Class=AkParamGroup Name=DefaultAkParams
+	//End Object
+	
+	Begin Object Name=ReplayComponent0
+	End Object
+	
+	Begin Object Name=LegacyTakeDamageComponent0
+	End Object
+	
+	
+	StaticMesh=DefaultMesh
+    BallCamTarget=DefaultBallCamTarget
+	MaxLinearSpeed=6000.0
+	MaxAngularSpeed=6.0
+    HitTeamNum=255
+    PredictionTimestep=0.050
+    //Ak=DefaultAkParams
+    Replay=ReplayComponent0
+    LegacyTakeDamageComponent=LegacyTakeDamageComponent0
+	Mass=30.0
+	CollisionType=ECollisionType.COLLIDE_BlockAll
+    bGameInstanceRelevant=true
+    BlockRigidBody=true
+    NetPriority=10.0
+	CollisionComponent=DefaultMesh
+	
+}

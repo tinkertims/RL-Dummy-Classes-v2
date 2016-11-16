@@ -103,3 +103,14 @@ var delegate<EventGameOverStingerForfeit> __EventGameOverStingerForfeit__Delegat
 var delegate<EventReplayDirectorSet> __EventReplayDirectorSet__Delegate;
 var delegate<EventMatchWinnerSet>
 **/
+
+state Active
+{
+	function HandleHitGoal(Ball_TA Ball, Goal_TA Goal)
+	{
+		local int ScoreIndex, AssistIndex, PointsTeamNum;
+        local PRI_TA ScorerPRI;
+        local Controller C;
+	}
+
+}

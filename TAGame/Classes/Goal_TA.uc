@@ -6,19 +6,51 @@
  * All rights belong to their respective owners.
  *******************************************************************************/
 class Goal_TA extends ActorComponent_X
-    EditInlineNew
-native;
-
-var() Actor GoalOrientation;
-
+	native;
+	
+/** Defines the direction that this goal faces. If not set, assumes owner's rotation */
+var() const Actor GoalOrientation;
+//var() const array OverrideGoalIndicatorOrientations;
+/** Team Number **/
 var() byte TeamNum;
+/** FX to play when goal scored */
+var() FXActor_TA ScoreFX;
+var() const string GoalIndicatorArchetype;
+/** If true the goal will only accept balls coming from the direction opposite to its orientation. */
+var() bool bOnlyGoalsFromDirection;
+/** if true show Focus Extent in game */
+var(AutoCam) bool bShowFocusExtent;
 /** If goal has a direction it only accepts balls from, use this actors rotation */
 var() const float GoalDirection;
 /** How many points to award for this goal. */
 var() int PointsToAward;
+/** When using AutoCam if ball is with-in this extent then try to focus AutoCam on the Goal - Extent is in Local Goal Rotation */
+var(AutoCam) Vector AutoCamFocusExtent;
+/** In Local goal space extent location offset from center */
+var(AutoCam) _AITypes_TA GoalFocusLocationOffset;
+/** Scorer must be in this radius from goal in order for autocam to attach */
+var(AutoCam) float MaxGoalScorerAttachRadius;
+/** Compare angle start when goal has been scored - in goal rotation eg. Vect(1,0,0) == Goal world rotation */
+var(AutoCam) AICachedGoalInfo GoalScoredDotDirection;
+/** The min dot angle required for player to be moving away from the goal in order to attach autocam onto player Range = -1 to 1 */
+var(AutoCam) float MinAttachGoalToScorerDot;
 var privatewrite transient Vector Location;
 var privatewrite transient Vector Direction;
 var privatewrite transient Rotator Rotation;
 var privatewrite transient Vector LocalMin;
 var privatewrite transient Vector LocalMax;
 var privatewrite transient Vector LocalExtent;
+
+defaultproperties
+{
+	PointsToAward=1
+	AutoCamFocusExtent=(X=2250.0,Y=4250.0,Z=4000.0)
+	MaxGoalScorerAttachRadius=4000.0
+	GoalScoredDotDirection=(X=1.0,Y=0.0,Z=0.0)
+	MinAttachGoalToScorerDot=0.050
+}
+
+protected event BeginPlay()
+{
+	local Box ActorBox;
+}
