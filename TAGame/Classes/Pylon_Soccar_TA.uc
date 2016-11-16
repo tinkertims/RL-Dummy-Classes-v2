@@ -5,8 +5,7 @@
  *
  * All rights belong to their respective owners.
  *******************************************************************************/
-class Pylon_Soccar_TA extends Pylon
-	native;
+class Pylon_Soccar_TA extends Pylon;
 
 /** Direction the field is facing */
 var() Rotator FieldOrientation;
@@ -17,27 +16,7 @@ var() Vector FieldExtent;
 /** Floating center of field */
 var() Vector FieldCenter;
 /** Goals contained in this field */
-var() editconst export editinline array<editconst export editinline Goal_TA> Goals;
+var() editinline array<export editinline Goal_TA> Goals;
 /** PlayerStarts contained in this field */
 var() editinline array<PlayerStart> SpawnPoints;
 var() float GroundZ;
-
-defaultproperties
-{
-	bUseRecast=true
-	Begin Object Class=Goal_TA Name=Goal_TA_0
-	End Object
-	
-	Begin Object Class=Goal_TA Name=Goal_TA_1
-		TeamNum=1
-	End Object
-	
-	Goals.Add(Goal_TA_0)
-	Goals.Add(Goal_TA_1)
-}
-
-final function Vector ClampToField(Vector V)
-{
-	local Vector LocalOffset;
-	//Return
-}
