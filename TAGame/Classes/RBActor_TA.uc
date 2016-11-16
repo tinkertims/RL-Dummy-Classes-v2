@@ -5,29 +5,4 @@
  *
  * All rights belong to their respective owners.
  *******************************************************************************/
-class RBActor_TA extends Pawn_X
-	native
-	nativereplication;
-	
-struct native WorldContactData
-{
-    var bool bHasContact;
-    var Vector Location;
-    var Vector Velocity;
-    var Vector Normal;
-
-    structdefaultproperties
-    {
-        bHasContact=false
-        Location=(X=0.0,Y=0.0,Z=0.0)
-        Velocity=(X=0.0,Y=0.0,Z=0.0)
-        Normal=(X=0.0,Y=0.0,Z=0.0)
-    }
-};
-	
-var const transient ReplicatedRBState RBState;
-var const transient WorldContactData WorldContact;
-
-// Export URBActor_TA::execAddForce(FFrame&, void* const)
-native final function AddForce(Vector Force, optional int ForceMode);
-
+class RBActor_TA extends Pawn_X;

@@ -15,31 +15,20 @@ var() float ImpulseScale;
 
 protected simulated function OnCreated()
 {
-    /*super.OnCreated();
-    Car.DoubleJumpComponent = self;
-    return;*/    
+    
+    //return;    
 }
 
 protected event ApplyForces(float ActiveTime)
 {
-    // End:0x87
-    /*if(ActiveTime == 0.0)
-    {
-        Car.AddForce((GetRotatorAxis(Car.RBState.Rotation, 2) * JumpImpulse) * ImpulseScale, 1);
-    }
-    return;*/    
+    //return;    
 }
 
 state Active
 {
-    /*protected event PrePhysicsStep(float DeltaTime)
+    protected event PrePhysicsStep(float DeltaTime)
     {
-        // End:0x1E
-        if(GetActiveTime() > 0.10)
-        {
-            Deactivate();
-        }
-        return;        
+        //return;        
     }
-    stop;*/    
+    
 }

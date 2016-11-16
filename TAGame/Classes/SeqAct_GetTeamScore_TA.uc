@@ -12,15 +12,10 @@ var int TeamScore;
 
 defaultproperties
 {
+    ObjName="Get Team Score"
     ObjCategory="TAGame"
 
-	bCallHandler=false
-    VariableLinks(0)=(ExpectedType=Class'Engine.SeqVar_Int',LinkDesc="Team Index",PropertyName=TeamIndex,bWriteable=false,bSequenceNeverReadsOnlyWritesToThisVar=false,bModifiesLinkedObject=false,bHidden=false,MinVars=1,MaxVars=255,DrawX=0,CachedProperty=none,bAllowAnyType=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
-    VariableLinks(1)=(ExpectedType=Class'Engine.SeqVar_Int',LinkDesc="Team Score",PropertyName=TeamScore,bWriteable=true,bSequenceNeverReadsOnlyWritesToThisVar=false,bModifiesLinkedObject=false,bHidden=false,MinVars=1,MaxVars=255,DrawX=0,CachedProperty=none,bAllowAnyType=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
-    ObjName="Get Team Score"
-}
-
-event Activated()
-{
-	local name GameShare, GameEvent;
+	VariableLinks.Empty;
+	VariableLinks(0)=(ExpectedType=class'SeqVar_Int',bWriteable=false,LinkDesc="Team Index",PropertyName=TeamIndex)
+	VariableLinks(1)=(ExpectedType=class'SeqVar_Int',bWriteable=true,LinkDesc="Team Score",PropertyName=TeamScore)
 }

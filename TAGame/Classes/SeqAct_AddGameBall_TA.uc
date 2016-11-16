@@ -13,43 +13,12 @@ var Actor SpawnTransform;
 var() bool bWake;
 var() const string BallArchetype;
 
-/*defaultproperties
-{
-
-	local PlayerController_TA PC;
-    local GameEvent_Soccar_TA GameEvent;
-	
-    ObjName="Add Game Ball"
-    ObjCategory="TAGame"
-	
-	VariableLinks(0)=(ExpectedType=class'SeqVar_Object',LinkDesc="Instigator", PropertyName=Instigator)
-	VariableLinks(1)=(ExpectedType=class'SeqVar_Object',LinkDesc="Spawn Location", PropertyName=SpawnTransform)
-}*/
-
 defaultproperties
 {
-	bWake=true
-    bCallHandler=false
-    bAutoActivateOutputLinks=false
-    InputLinks(0)=(LinkDesc="Add",bHasImpulse=false,QueuedActivations=0,bDisabled=false,bDisabledPIE=false,LinkedOp=none,DrawY=0,bHidden=false,ActivateDelay=0.0,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
-    InputLinks(1)=(LinkDesc="Destroy",bHasImpulse=false,QueuedActivations=0,bDisabled=false,bDisabledPIE=false,LinkedOp=none,DrawY=0,bHidden=false,ActivateDelay=0.0,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
-    InputLinks(2)=(LinkDesc="DestroyAll",bHasImpulse=false,QueuedActivations=0,bDisabled=false,bDisabledPIE=false,LinkedOp=none,DrawY=0,bHidden=false,ActivateDelay=0.0,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
-    InputLinks(3)=(LinkDesc="Wake",bHasImpulse=false,QueuedActivations=0,bDisabled=false,bDisabledPIE=false,LinkedOp=none,DrawY=0,bHidden=false,ActivateDelay=0.0,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
-    OutputLinks(0)=(LinkDesc="Added",bHasImpulse=false,bDisabled=false,bDisabledPIE=false,LinkedOp=none,ActivateDelay=0.0,DrawY=0,bHidden=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0,PIEActivationTime=0.0,bIsActivated=false)
-    OutputLinks(1)=(LinkDesc="Destroyed",bHasImpulse=false,bDisabled=false,bDisabledPIE=false,LinkedOp=none,ActivateDelay=0.0,DrawY=0,bHidden=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0,PIEActivationTime=0.0,bIsActivated=false)
-    OutputLinks(2)=(LinkDesc="DestroyedAll",bHasImpulse=false,bDisabled=false,bDisabledPIE=false,LinkedOp=none,ActivateDelay=0.0,DrawY=0,bHidden=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0,PIEActivationTime=0.0,bIsActivated=false)
-    OutputLinks(3)=(LinkDesc="Awake",bHasImpulse=false,bDisabled=false,bDisabledPIE=false,LinkedOp=none,ActivateDelay=0.0,DrawY=0,bHidden=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0,PIEActivationTime=0.0,bIsActivated=false)
-    VariableLinks(0)=(ExpectedType=Class'Engine.SeqVar_Object',LinkDesc="Instigator",PropertyName=Instigator,bWriteable=false,bSequenceNeverReadsOnlyWritesToThisVar=false,bModifiesLinkedObject=false,bHidden=false,MinVars=1,MaxVars=255,DrawX=0,CachedProperty=none,bAllowAnyType=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
-    VariableLinks(1)=(ExpectedType=Class'Engine.SeqVar_Object',LinkDesc="SpawnTransform",PropertyName=SpawnTransform,bWriteable=false,bSequenceNeverReadsOnlyWritesToThisVar=false,bModifiesLinkedObject=false,bHidden=false,MinVars=1,MaxVars=255,DrawX=0,CachedProperty=none,bAllowAnyType=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
-    VariableLinks(2)=(ExpectedType=Class'Engine.SeqVar_Object',LinkDesc="SpawnedBall",PropertyName=SpawnedBall,bWriteable=true,bSequenceNeverReadsOnlyWritesToThisVar=false,bModifiesLinkedObject=false,bHidden=false,MinVars=1,MaxVars=255,DrawX=0,CachedProperty=none,bAllowAnyType=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
     ObjName="Add Game Ball"
-	ObjCategory="TAGame"
+    ObjCategory="TAGame"
 }
 
 event Activated()
 {
-	local PlayerController_TA PC;
-    local GameEvent_Soccar_TA GameEvent;
-	
-	//Return
 }

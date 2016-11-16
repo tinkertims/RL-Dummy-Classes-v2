@@ -9,12 +9,11 @@ class SeqEvent_GoalScored_TA extends SequenceEvent;
 
 defaultproperties
 {
+    ObjName="Goal Scored"
     ObjCategory="TAGame"
 
-	MaxTriggerCount=0
-    bPlayerOnly=false
-    OutputLinks(0)=(LinkDesc="Blue",bHasImpulse=false,bDisabled=false,bDisabledPIE=false,LinkedOp=none,ActivateDelay=0.0,DrawY=0,bHidden=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0,PIEActivationTime=0.0,bIsActivated=false)
-    OutputLinks(1)=(LinkDesc="Red",bHasImpulse=false,bDisabled=false,bDisabledPIE=false,LinkedOp=none,ActivateDelay=0.0,DrawY=0,bHidden=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0,PIEActivationTime=0.0,bIsActivated=false)
-    OutputLinks(2)=(LinkDesc="Kill Effects",bHasImpulse=false,bDisabled=false,bDisabledPIE=false,LinkedOp=none,ActivateDelay=0.0,DrawY=0,bHidden=false,bMoving=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0,PIEActivationTime=0.0,bIsActivated=false)
-    ObjName="Goal Scored"
+	bClientSideOnly=true
+    OutputLinks(0)=(LinkDesc="Orange",bHasImpulse=false,bDisabled=false,bDisabledPIE=false,LinkedOp=none,ActivateDelay=0.0,DrawY=-1459,bHidden=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
+    OutputLinks(1)=(LinkDesc="Blue",bHasImpulse=false,bDisabled=false,bDisabledPIE=false,LinkedOp=none,ActivateDelay=0.0,DrawY=-1459,bHidden=false,bClampedMax=false,bClampedMin=false,OverrideDelta=0)
+    OutputLinks(2)=()
 }

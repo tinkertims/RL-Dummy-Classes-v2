@@ -35,7 +35,7 @@ var privatewrite transient Car_TA Car;
 var privatewrite transient LoadoutData FullLoadout;
 var privatewrite repnotify transient ClientLoadoutData ClientLoadout;
 var transient LoadoutTeamPaint TeamPaint;
-//var privatewrite transient array<TAPlayerStat> MatchStats;
+var privatewrite transient array<TAPlayerStat> MatchStats;
 var privatewrite repnotify transient int RespawnTimeRemaining;
 var privatewrite transient int WaitingStartTime;
 var transient float TotalGameTimePlayed;

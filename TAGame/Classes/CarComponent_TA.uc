@@ -26,7 +26,7 @@ var transient byte ComponentData;
 var privatewrite repnotify transient byte ReplicatedActive;
 var transient name Activator;
 var privatewrite repnotify float Vehicle;
-var privatewrite transient Car_TA Car;
+var privatewrite transient byte Car;
 var private transient float ActivityTime;
 var privatewrite repnotify transient float ReplicatedActivityTime;
 var privatewrite transient float FXActor;
@@ -148,9 +148,9 @@ protected simulated function RemoveFromCar()
 }
 
 // Export UCarComponent_TA::execPrePhysicsStep(FFrame&, void* const)
-protected event PrePhysicsStep(float DeltaTime)
+protected native event PrePhysicsStep(float DeltaTime)
 {
-    //Return DeltaTime;        
+    //native.DeltaTime;        
 }
 
 // Export UCarComponent_TA::execApplyForces(FFrame&, void* const)
