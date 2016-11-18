@@ -5,7 +5,8 @@
  *
  * All rights belong to their respective owners.
  *******************************************************************************/
-class GoalVolume_TA extends Volume;
+class GoalVolume_TA extends Volume
+	placeable;
 
 var() export editinline Goal_TA Goal;
 
